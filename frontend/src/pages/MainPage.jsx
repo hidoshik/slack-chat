@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
-import Channels from '../Components/Channels.jsx';
+import ChannelsPanel from '../Components/ChannelsPanel.jsx';
 import CurrentChannel from '../Components/CurrentChannel.jsx';
 
 const MainPage = () => {
@@ -17,7 +17,7 @@ const MainPage = () => {
   return (
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <Row className="h-100 bg-white flex-md-row">
-        <Channels />
+        <ChannelsPanel />
         <CurrentChannel />
       </Row>
     </Container>

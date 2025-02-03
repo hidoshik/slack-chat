@@ -52,8 +52,7 @@ const LoginForm = () => {
               <Formik
                 initialValues={{ username: '', password: '' }}
                 validationSchema={SignupSchema}
-                onSubmit={handleSubmit}
-              >
+                onSubmit={handleSubmit}>
                 <Form className="col-12 col-md-6 mt-3 mt-md-0">
                   <h1 className="text-center mb-4">Войти</h1>
                   <div className="form-floating mb-3">
