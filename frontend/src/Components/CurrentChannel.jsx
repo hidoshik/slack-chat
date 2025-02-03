@@ -1,5 +1,5 @@
-import { Col } from "react-bootstrap";
-import { Formik, Form, Field } from "formik";
+import { Col } from 'react-bootstrap';
+import { Formik, Form, Field } from 'formik';
 
 const CurrentChannel = () => {
   return (
@@ -11,10 +11,7 @@ const CurrentChannel = () => {
           </p>
           <span className="text-muted">{} сообщений</span>
         </div>
-        <div
-          id="messages-box"
-          className="chat-messages overflow-auto px-5 "
-        ></div>
+        <div id="messages-box" className="chat-messages overflow-auto px-5 "></div>
         <div className="mt-auto px-5 py-3">
           <Formik>
             <Form className="py-1 border rounded-2">

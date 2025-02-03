@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
@@ -7,13 +7,13 @@ export default defineConfig({
     port: 5002,
     proxy: {
       '/api': {
-        target: 'http://localhost:5001',
+        target: 'http://localhost:5001'
       },
       '/socket.io': {
         target: 'ws://localhost:5001',
         ws: true,
-        rewriteWsOrigin: true,
-      },
-    },
-  },
-})
+        rewriteWsOrigin: true
+      }
+    }
+  }
+});
