@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +10,14 @@ import avatarLogin from "../assets/avatar.jpg";
 
 const LoginForm = () => {
   const [isValid, setIsValid] = useState(null);
+  const inputEl = useRef(null);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
 
   const handleSubmit = async (values) => {
     try {
@@ -24,6 +30,8 @@ const LoginForm = () => {
       setIsValid(true);
     } catch (error) {
       setIsValid(false);
+      inputEl.current.select();
+      console.log(error);
     }
   };
 
@@ -57,11 +65,11 @@ const LoginForm = () => {
                       name="username"
                       autoComplete="username"
                       id="username"
-                      required
                       placeholder="Ваш ник"
                       className={`form-control ${
                         isValid === false ? "is-invalid" : ""
                       }`}
+                      innerRef={inputEl}
                     />
                     <label htmlFor="username">Ваш ник</label>
                   </div>
@@ -71,19 +79,18 @@ const LoginForm = () => {
                       name="password"
                       autoComplete="current-password"
                       id="password"
-                      required
                       placeholder="Пароль"
                       className={`form-control ${
                         isValid === false ? "is-invalid" : ""
                       }`}
                     />
-                    {!isValid ? (
+                    {isValid === false ? (
                       <div className="invalid-tooltip">
                         Неверные имя пользователя или пароль
                       </div>
                     ) : null}
                     <label htmlFor="password" className="form-label">
-                      Password
+                      Пароль
                     </label>
                   </div>
                   <button

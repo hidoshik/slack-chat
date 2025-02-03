@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginForm from "./Components/LoginForm.jsx";
-import NotFound from "./Components/NotFound.jsx";
+import LoginForm from "./pages/LoginForm.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import MainPage from "./pages/MainPage.jsx";
 import MainLayout from "./Components/MainLayout.jsx";
-import MainPage from "./Components/MainPage.jsx";
 
 const App = () => {
   return (
