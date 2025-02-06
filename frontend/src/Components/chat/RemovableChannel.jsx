@@ -2,7 +2,7 @@ const RemovableChannel = ({ name }) => {
   return (
     <li className="nav-item w-100">
       <div role="group" className="d-flex dropdown btn-group">
-        <button type="button" className="w-100 rounded-0 text-start btn">
+        <button type="button" className={`w-100 rounded-0 text-start btn ${selectedChannel === name ? 'btn-secondary' : ''}`}>
           <span className="me-1">#</span>
           {name}
         </button>

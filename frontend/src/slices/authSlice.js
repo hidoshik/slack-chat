@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  token: ''
+  token: '',
+  username: '',
 };
 
 const authSlice = createSlice({
@@ -11,9 +13,9 @@ const authSlice = createSlice({
   reducers: {
     login: (state, { payload }) => {
       state.token = payload;
-    }
-  }
+    },
+  },
 });
 
-export const { login } = authSlice.actions;
+export const { login, setUsername } = authSlice.actions;
 export default authSlice.reducer;

@@ -5,7 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container, Row, Card, Col } from 'react-bootstrap';
-import { login } from '../slices/authSlice.js';
+import { login, setUsername } from '../slices/authSlice.js';
 import avatarLogin from '../assets/avatar.jpg';
 
 const LoginForm = () => {
@@ -22,9 +22,10 @@ const LoginForm = () => {
   const handleSubmit = async (values) => {
     try {
       const response = await axios.post('/api/v1/login', values);
-      const { token } = response.data;
+      const { token, username } = response.data;
 
       window.localStorage.setItem('token', token);
+      window.localStorage.setItem('username', username);
       dispatch(login(token));
       navigate('/');
       setIsValid(true);
@@ -59,6 +60,7 @@ const LoginForm = () => {
                     <Field
                       type="text"
                       name="username"
+                      required={true}
                       autoComplete="username"
                       id="username"
                       placeholder="Ваш ник"
@@ -71,6 +73,7 @@ const LoginForm = () => {
                     <Field
                       type="password"
                       name="password"
+                      required={true}
                       autoComplete="current-password"
                       id="password"
                       placeholder="Пароль"

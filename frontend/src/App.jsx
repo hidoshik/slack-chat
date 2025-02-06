@@ -4,8 +4,11 @@ import LoginForm from './pages/LoginForm.jsx';
 import NotFound from './pages/NotFound.jsx';
 import MainPage from './pages/MainPage.jsx';
 import MainLayout from './Components/MainLayout.jsx';
+import useSocket from './hooks/useSocket.js';
 
 const App = () => {
+  useSocket();
+
   return (
     <BrowserRouter>
       <MainLayout>

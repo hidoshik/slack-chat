@@ -5,24 +5,9 @@ import { Col } from 'react-bootstrap';
 import AddChannel from './AddChannel.jsx';
 import Channel from './Channel.jsx';
 import RemovableChannel from './RemovableChannel.jsx';
-import { setChannels } from '../slices/channelsSlice.js';
+import { setChannels } from '../../slices/channelsSlice.js';
 
-const ChannelsPanel = () => {
-  const dispatch = useDispatch();
-  const token = window.localStorage.getItem('token');
-
-  useEffect(() => {
-    axios
-      .get('/api/v1/channels', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then((response) => {
-        dispatch(setChannels(response.data));
-      });
-  }, []);
-
+const ChannelsPanel = ({ selectedChannel, setSelectedChannel }) => {
   const channels = useSelector((state) => state.channels.channels);
 
   return (
@@ -36,9 +21,19 @@ const ChannelsPanel = () => {
         className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map(({ id, name, removable }) => {
           return removable ? (
-            <RemovableChannel name={name} key={id}/>
+            <RemovableChannel
+              key={id}
+              name={name}
+              selectedChannel={selectedChannel}
+              onClick={() => setSelectedChannel(name)}
+            />
           ) : (
-            <Channel name={name} key={id} />
+            <Channel
+              key={id}
+              name={name}
+              selectedChannel={selectedChannel}
+              onClick={() => setSelectedChannel(name)}
+            />
           );
         })}
       </ul>

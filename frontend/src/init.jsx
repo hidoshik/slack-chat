@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import store from './slices/store.js';
 
 const init = async () => {
+  
   return (
     <Provider store={store}>
       <App />
