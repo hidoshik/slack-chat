@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import socket from '../socket.js';
-import { newMessage } from '../slices/messagesSlice.js'
+import socket from '../socket';
+import { newMessage } from '../slices/messagesSlice';
 
 const useSocket = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const useSocket = () => {
         dispatch(newMessage(payload));
       });
     };
-  }, []);
+  }, [dispatch]);
 };
 
 export default useSocket;

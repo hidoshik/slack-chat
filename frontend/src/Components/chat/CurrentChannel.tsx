@@ -32,7 +32,7 @@ const CurrentChannel = ({ selectedChannel }) => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [dispatch, token]);
 
   const handleSubmit = (values, actions) => {
     const newMessage = { body: values.message, channelId, username };

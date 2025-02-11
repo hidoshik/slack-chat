@@ -2,12 +2,12 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col } from 'react-bootstrap';
-import AddChannel from './AddChannel.jsx';
-import Channel from './Channel.jsx';
-import RemovableChannel from './RemovableChannel.jsx';
-import { setChannels } from '../../slices/channelsSlice.js';
+import AddChannel from './AddChannel';
+import Channel from './Channel';
+import RemovableChannel from './RemovableChannel';
+import { setChannels } from '../../slices/channelsSlice';
 
-const ChannelsPanel = ({ selectedChannel, setSelectedChannel }) => {
+const ChannelsPanel = ({ selectedChannel, changeChannel }) => {
   const channels = useSelector((state) => state.channels.channels);
 
   return (
@@ -25,14 +25,14 @@ const ChannelsPanel = ({ selectedChannel, setSelectedChannel }) => {
               key={id}
               name={name}
               selectedChannel={selectedChannel}
-              onClick={() => setSelectedChannel(name)}
+              onClick={changeChannel(name)}
             />
           ) : (
             <Channel
               key={id}
               name={name}
               selectedChannel={selectedChannel}
-              onClick={() => setSelectedChannel(name)}
+              onClick={changeChannel(name)}
             />
           );
         })}

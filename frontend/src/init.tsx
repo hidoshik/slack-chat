@@ -1,9 +1,8 @@
-import App from './App.jsx';
+import App from './App';
 import { Provider } from 'react-redux';
-import store from './slices/store.js';
+import store from './slices/store';
 
 const init = async () => {
-  
   return (
     <Provider store={store}>
       <App />

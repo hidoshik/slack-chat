@@ -1,8 +1,8 @@
-/* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
 const initialState = {
-  channels: [],
+  channels: []
 };
 
 const channelsSlice = createSlice({
@@ -12,8 +12,8 @@ const channelsSlice = createSlice({
   reducers: {
     setChannels: (state, { payload }) => {
       state.channels = payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setChannels } = channelsSlice.actions;

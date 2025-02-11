@@ -5,7 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container, Row, Card, Col } from 'react-bootstrap';
-import { login, setUsername } from '../slices/authSlice.js';
+import { login, setUsername } from '../slices/authSlice';
 import avatarLogin from '../assets/avatar.jpg';
 
 const LoginForm = () => {
