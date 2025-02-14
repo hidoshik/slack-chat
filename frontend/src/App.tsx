@@ -1,6 +1,8 @@
+import './locales/config';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginForm from './pages/LoginForm';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import NotFound from './pages/NotFound';
 import MainPage from './pages/MainPage';
 import MainLayout from './Components/MainLayout';
@@ -14,7 +16,8 @@ const App = () => {
       <MainLayout>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="login" element={<LoginForm />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>

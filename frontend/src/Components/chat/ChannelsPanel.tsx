@@ -1,14 +1,19 @@
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { channelsState } from '../../slices/channelsSlice';
 import { Col } from 'react-bootstrap';
 import AddChannel from './AddChannel';
 import Channel from './Channel';
 import RemovableChannel from './RemovableChannel';
-import { setChannels } from '../../slices/channelsSlice';
+import { useSelector } from 'react-redux';
 
-const ChannelsPanel = ({ selectedChannel, changeChannel }) => {
-  const channels = useSelector((state) => state.channels.channels);
+interface PanelControl {
+  selectedChannel: string;
+  changeChannel: (val: string) => void;
+}
+
+const ChannelsPanel = (params: PanelControl) => {
+  const { selectedChannel, changeChannel } = params;
+
+  const { channels } = useSelector(channelsState);
 
   return (
     <Col md="2" className="col-4 border-end px-0 bg-light flex-column h-100 d-flex">
@@ -23,16 +28,17 @@ const ChannelsPanel = ({ selectedChannel, changeChannel }) => {
           return removable ? (
             <RemovableChannel
               key={id}
+              id={id}
               name={name}
               selectedChannel={selectedChannel}
-              onClick={changeChannel(name)}
+              onClick={() => changeChannel(name)}
             />
           ) : (
             <Channel
               key={id}
               name={name}
               selectedChannel={selectedChannel}
-              onClick={changeChannel(name)}
+              onClick={() => changeChannel(name)}
             />
           );
         })}

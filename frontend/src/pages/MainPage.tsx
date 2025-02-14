@@ -1,17 +1,19 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import ChannelsPanel from '../Components/chat/ChannelsPanel';
 import CurrentChannel from '../Components/chat/CurrentChannel';
-import { setChannels } from '../slices/channelsSlice';
+import { getChannels } from '../slices/channelsSlice';
 import { Container, Row, Spinner } from 'react-bootstrap';
+import { channelsState, setChannel } from '../slices/channelsSlice';
 
 const MainPage = () => {
-  const [selectedChannel, setSelectedChannel] = useState('general');
-
+  const { channels, currentChannel } = useSelector(channelsState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const token = window.localStorage.getItem('token');
 
   useEffect(() => {
@@ -26,20 +28,18 @@ const MainPage = () => {
         }
       })
       .then((response) => {
-        dispatch(setChannels(response.data));
+        dispatch(getChannels(response.data));
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-
-  const channels = useSelector((state) => state.channels.channels);
+  }, [dispatch, navigate, token]);
 
   if (channels.length === 0) {
     return (
       <div className="d-flex justify-content-center h-100 align-items-center">
         <Spinner animation="border" className="text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden">{t('loading')}</span>
         </Spinner>
       </div>
     );
@@ -49,10 +49,10 @@ const MainPage = () => {
     <Container className="h-100 my-4 overflow-hidden rounded shadow">
       <Row className="h-100 bg-white flex-md-row">
         <ChannelsPanel
-          selectedChannel={selectedChannel}
-          changeChannel={(val) => setSelectedChannel(val)}
+          selectedChannel={currentChannel}
+          changeChannel={(val: string) => dispatch(setChannel(val))}
         />
-        <CurrentChannel selectedChannel={selectedChannel} setSelectedChannel={setSelectedChannel} />
+        <CurrentChannel selectedChannel={currentChannel} />
       </Row>
     </Container>
   );

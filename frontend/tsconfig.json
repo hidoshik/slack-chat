@@ -6,15 +6,16 @@
     "sourceMap": true,
     "target": "es6",
     "noImplicitAny": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "importHelpers": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "jsx": "react-jsx",
     "typeRoots": ["./node_modules/@types"],
-    "types": ["react", "react-dom"],
+    "types": ["react", "react-dom", "node"],
     "lib": ["dom", "es6"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
   "exclude": ["node_modules"]
 }
