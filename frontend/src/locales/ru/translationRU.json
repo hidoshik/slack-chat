@@ -39,5 +39,6 @@
   "delete_success_toast": "Канал удален",
   "delete_error_toast": "Ошибка при удалении канала",
   "new_channel_success_toast": "Канал создан",
-  "new_channel_error_toast": "Ошибка при создании канала"
+  "new_channel_error_toast": "Ошибка при создании канала",
+  "channel_control": "Управление каналом"
 }

@@ -34,7 +34,9 @@ const RemovableChannel = (params: ChannelParams) => {
           <Dropdown.Toggle
             className={selectedChannel === name ? 'btn-secondary' : ''}
             variant="basic"
-            id="dropdown-basic"></Dropdown.Toggle>
+            id="dropdown-basic">
+            <span className="visually-hidden">{t('channel_control')}</span>
+          </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => setShowDeleteModal(true)}>{t('delete')}</Dropdown.Item>
             <Dropdown.Item onClick={() => setShowRenameModal(true)}>{t('rename')}</Dropdown.Item>
