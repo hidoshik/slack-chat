@@ -36,7 +36,7 @@
   "messages_count_other": "{{count}} сообщений",
   "rename_success_toast": "Канал переименован",
   "rename_error_toast": "Ошибка при переименовании канала",
-  "delete_success_toast": "Канал удален",
+  "delete_success_toast": "Канал удалён",
   "delete_error_toast": "Ошибка при удалении канала",
   "new_channel_success_toast": "Канал создан",
   "new_channel_error_toast": "Ошибка при создании канала",

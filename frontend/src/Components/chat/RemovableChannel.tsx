@@ -26,7 +26,7 @@ const RemovableChannel = (params: ChannelParams) => {
         <button
           onClick={onClick}
           type="button"
-          className={`w-100 rounded-0 text-start btn ${selectedChannel === name ? 'btn-secondary' : ''}`}>
+          className={`w-100 rounded-0 text-start ${selectedChannel === name ? 'text-truncate btn btn-secondary' : 'btn'}`}>
           <span className="me-1">#</span>
           {name}
         </button>

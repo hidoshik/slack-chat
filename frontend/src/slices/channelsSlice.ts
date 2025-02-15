@@ -31,16 +31,19 @@ const channelsSlice = createSlice({
       state.channels = payload;
     },
     addChannel: (state, { payload }: PayloadAction<Channel>) => {
-      state.channels = [...state.channels, payload];
+      if (!state.channels.find(({ id }) => id === payload.id)) {
+        state.channels = [...state.channels, payload];
+      }
     },
     setChannel: (state, { payload }: PayloadAction<string>) => {
       state.currentChannel = payload;
     },
-    deleteChannel: (state, { payload }: PayloadAction<string>) => {
-      state.channels = state.channels.filter((channel) => channel.id !== payload);
+    deleteChannel: (state, { payload }: PayloadAction<{ id: string }>) => {
+      state.channels = state.channels.filter((channel) => channel.id !== payload.id);
     },
     renameChannel: (state, { payload }: PayloadAction<RenameChannelParams>) => {
       const { id, editedChannel } = payload;
+
       state.channels = state.channels.map((channel) => {
         return channel.id === id ? editedChannel : channel;
       });
