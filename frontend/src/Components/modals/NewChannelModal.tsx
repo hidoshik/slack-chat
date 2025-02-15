@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import filter from 'leo-profanity';
 import { addChannel } from '../../slices/channelsSlice';
 import { setChannel } from '../../slices/channelsSlice';
 import ModalForm from './ModalForm';
@@ -26,7 +27,7 @@ const NewChannelModal: React.FC<ChannelModalParams> = (params) => {
   const notifyError = () => toast.error(t('new_channel_error_toast'));
 
   const handleSubmit = async (values: FormInput) => {
-    const newChannel = { name: values.name };
+    const newChannel = { name: filter.clean(values.name) };
     const token = window.localStorage.getItem('token');
 
     try {

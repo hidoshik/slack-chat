@@ -2,6 +2,7 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import filter from 'leo-profanity';
 import { toast } from 'react-toastify';
 import { renameChannel } from '../../slices/channelsSlice';
 import ModalForm from './ModalForm';
@@ -29,7 +30,7 @@ const RenameModal = (params: RenameModalParams) => {
     const token = window.localStorage.getItem('token');
 
     try {
-      const editedName = { name: values.name };
+      const editedName = { name: filter.clean(values.name) };
       const url = `/api/v1/channels/${id}`;
       const response = await axios.patch(url, editedName, {
         headers: {

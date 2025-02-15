@@ -22,6 +22,7 @@
     "bootstrap": "^5.3.3",
     "formik": "^2.4.6",
     "i18next": "^24.2.2",
+    "leo-profanity": "^1.7.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^18.3.1",
@@ -33,6 +34,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@types/leo-profanity": "^1.5.4",
     "@types/node": "^22.13.1",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
@@ -49,5 +51,8 @@
     "prettier": "^3.4.2",
     "typescript": "^5.7.3",
     "vite": "^6.0.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
   }
 }

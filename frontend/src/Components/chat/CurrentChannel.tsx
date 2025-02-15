@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation, Trans } from 'react-i18next';
 import { Col } from 'react-bootstrap';
+import filter from 'leo-profanity';
 import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { setMessages } from '../../slices/messagesSlice.js';
 import { channelsState } from '../../slices/channelsSlice.js';
@@ -21,6 +22,7 @@ const CurrentChannel = (params: CurrentChannelParams) => {
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  filter.loadDictionary('ru');
 
   const inputEl = useRef<HTMLInputElement>(null);
   const { messages } = useSelector(messagesList);
@@ -56,7 +58,7 @@ const CurrentChannel = (params: CurrentChannelParams) => {
   }, [dispatch, token]);
 
   const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
-    const newMessage = { body: values.message, channelId, username };
+    const newMessage = { body: filter.clean(values.message), channelId, username };
 
     try {
       axios
