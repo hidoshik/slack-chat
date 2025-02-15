@@ -2,6 +2,7 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { renameChannel } from '../../slices/channelsSlice';
 import ModalForm from './ModalForm';
 
@@ -21,6 +22,8 @@ const RenameModal = (params: RenameModalParams) => {
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const notifySuccess = () => toast.success(t('rename_success_toast'));
+  const notifyError = () => toast.error(t('rename_error_toast'));
 
   const handleSubmit = async (values: FormInput) => {
     const token = window.localStorage.getItem('token');
@@ -34,12 +37,15 @@ const RenameModal = (params: RenameModalParams) => {
         }
       });
 
+      notifySuccess();
+
       const editedChannel = response.data;
 
       dispatch(renameChannel({ id, editedChannel }));
       onHide(false);
     } catch (error) {
       console.log(error);
+      notifyError();
     }
   };
 

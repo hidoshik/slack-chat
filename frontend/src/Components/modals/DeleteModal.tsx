@@ -2,6 +2,7 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { deleteChannel } from '../../slices/channelsSlice';
 
 interface DeleteModalParams {
@@ -16,6 +17,9 @@ const DeleteModal = (params: DeleteModalParams) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
+  const notifySuccess = () => toast.success(t('delete_success_toast'));
+  const notifyError = () => toast.error(t('delete_error_toast'));
+
   const handleDelete = async () => {
     const token = window.localStorage.getItem('token');
 
@@ -27,10 +31,12 @@ const DeleteModal = (params: DeleteModalParams) => {
         }
       });
 
+      notifySuccess();
       onHide(false);
       dispatch(deleteChannel(id));
     } catch (error) {
       console.log(error);
+      notifyError();
     }
   };
 

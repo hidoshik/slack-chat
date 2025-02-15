@@ -1,4 +1,5 @@
 import Navigator from './Navigator';
+import { ToastContainer } from 'react-toastify';
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -6,10 +7,13 @@ type MainLayoutProps = {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="d-flex flex-column main-layout-height">
-      <Navigator />
-      {children}
-    </div>
+    <>
+      <div className="d-flex flex-column main-layout-height">
+        <Navigator />
+        {children}
+      </div>
+      <ToastContainer />
+    </>
   );
 };
 
