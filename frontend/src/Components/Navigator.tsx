@@ -19,9 +19,11 @@ const Navigator = () => {
         <a href="/" className="navbar-brand">
           {t('platform_name')}
         </a>
-        <button type="button" onClick={handleClick} className="btn btn-primary">
-          {t('logout')}
-        </button>
+        {window.localStorage.getItem('token') && (
+          <button type="button" onClick={handleClick} className="btn btn-primary">
+            {t('logout')}
+          </button>
+        )}
       </Container>
     </nav>
   );
