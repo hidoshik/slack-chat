@@ -23,6 +23,7 @@ const CurrentChannel = (params: CurrentChannelParams) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   filter.loadDictionary('ru');
+  filter.loadDictionary('en');
 
   const inputEl = useRef<HTMLInputElement>(null);
   const { messages } = useSelector(messagesList);
