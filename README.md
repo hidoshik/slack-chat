@@ -1,5 +1,17 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/hidoshik/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/hidoshik/frontend-project-12/actions)
+### 1. Clone the repository from GitHub into your system
+    git clone git@github.com:hidoshik/slack-chat.git
 
-[App Link
-](https://frontend-project-12-mlk2.onrender.com)
+### 2. Install the dependencies
+    make install
+
+### 3. Run the server
+    make start-backend
+
+### 4. Build the project
+    make build
+
+### 5. Fall into directory
+    cd frontend
+
+### 6. Run local project
+    npm run dev
